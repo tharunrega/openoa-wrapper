@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+# openoa dependencies will be installed via git+https or similar in Dockerfile to ensure compatibility
+pandas
+numpy
+openoa
