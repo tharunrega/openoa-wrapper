@@ -11,7 +11,9 @@ function App() {
     setError(null)
     setResults(null)
     try {
-      const response = await fetch('http://localhost:8000/analyze/aep', {
+      // Use environment variable for API URL or fallback to localhost
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/analyze/aep`, {
         method: 'POST',
       })
       if (!response.ok) {
@@ -32,7 +34,7 @@ function App() {
       <div className="card">
         <h2>Annual Energy Production (AEP) Analysis</h2>
         <p>Run a demo analysis using the "La Haute Borne" wind farm data.</p>
-        
+
         <button onClick={runAnalysis} disabled={loading}>
           {loading ? 'Running Analysis...' : 'Run Analysis'}
         </button>
